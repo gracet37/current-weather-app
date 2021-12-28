@@ -11,6 +11,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ handleInputChange }) => 
         <React.Fragment>
             <TextField 
                 aria-label="city search input" 
+                fullWidth
                 id="outlined-basic" 
                 label="City search" 
                 variant="outlined" 

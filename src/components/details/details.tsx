@@ -56,7 +56,7 @@ export const Details: React.FC<DetailsProps> = ({ data, favorites, setFavorites 
 
     return (
         <React.Fragment>
-            <Box maxWidth="500px" marginTop='50px' padding='20px'>
+            <Box marginTop='50px' padding='20px'>
                 <Box sx={{ display: "flex"}}>
                     <Typography variant='h2' sx={{ fontSize: 35, marginBottom: '60px' }}>Current weather in {cityQuery}</Typography>
                     {isSaved ? (

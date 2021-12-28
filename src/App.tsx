@@ -7,8 +7,6 @@ import { DetailsContainer } from './components/details';
 import { Favorites } from './components/favorites'
 import { WeatherData } from './types';
 
-
-
 const App: React.FC = () => {
 
   const [ cityQuery, setCityQuery ] = React.useState<string>('')
@@ -16,6 +14,19 @@ const App: React.FC = () => {
   const [ data, setData ] = React.useState<WeatherData>();
   const [ error, setError ] = React.useState();
   const [ favorites, setFavorites ] = React.useState<WeatherData[]>([]);
+
+  React.useEffect(() => {
+    const localStorageValues = JSON.parse(localStorage.getItem("favorite-cities"));
+    if (localStorageValues.length > 0) {
+      setFavorites(localStorageValues)
+    }
+  }, [])
+
+  React.useEffect(() => {
+    if (favorites.length > 0) {
+      localStorage.setItem("favorite-cities", JSON.stringify(favorites))
+    }
+  }, [favorites])
 
   const cityWeatherSearch = (cityQuery: string) => {
     setSearchState(StateType.LOADING)
@@ -54,8 +65,8 @@ const App: React.FC = () => {
 
 
   return (
-    <Box>
-      <Typography variant="h1" fontSize="50px">Current weather city search</Typography>
+    <Box className='app-container'>
+      <Typography variant="h1" fontSize="50px" marginBottom="30px">Current weather in ...</Typography>
       <SearchForm handleInputChange={handleInputChange} />
       <DetailsContainer data={data} searchState={searchState} favorites={favorites} setFavorites={setFavorites} error={error}/>
       <Favorites favorites={favorites} setFavorites={setFavorites} handleDataChange={handleDataChange}/>

@@ -16,8 +16,6 @@ type FavoritesProps = {
 export const Favorites: React.FC<FavoritesProps> = ({ favorites, setFavorites, handleDataChange }) => {
     const [ sort, setSort ] = React.useState(SortType.ASC)
 
-
-
     const removeFromFavorites = (name: string) => {
         const updatedFavorites = favorites.filter(favorite => favorite.name !== name);
         setFavorites(updatedFavorites)
@@ -31,6 +29,7 @@ export const Favorites: React.FC<FavoritesProps> = ({ favorites, setFavorites, h
                     setSort(sort === SortType.ASC ? SortType.DESC : SortType.ASC)
                 }}
                 sx={{ display: "flex", cursor: 'pointer'}}
+                justifyContent='center'
             >
                 {/* {sort === 'asc' ? <ArrowUpwardIcon sx={{ fontSize: 35, marginLeft: '20px'}}/> :  <ArrowDownwardIcon sx={{ fontSize: 35, marginLeft: '20px'}}/>} */}
                 <Typography variant='h2' sx={{ fontSize: 35, marginBottom: '60px' }}>Favorited cities:</Typography>
