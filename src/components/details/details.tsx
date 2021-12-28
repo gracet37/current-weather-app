@@ -1,5 +1,4 @@
 import React from "react";
-import { StateType } from '../../types/enum';
 import { WeatherData } from '../../types';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import AirIcon from '@mui/icons-material/Air';
@@ -10,45 +9,40 @@ import { Box, Typography } from '@mui/material'
 
 type DetailsProps = {
     data: WeatherData;
-    searchState: StateType;
     favorites: WeatherData[];
     setFavorites: (data: WeatherData[]) => void;
 };
 
-export const Details: React.FC<DetailsProps> = ({ data, searchState, favorites, setFavorites }) => {
+export const Details: React.FC<DetailsProps> = ({ data, favorites, setFavorites }) => {
+console.log("🚀 ~ file: details.tsx ~ line 17 ~ data", data)
     const [ isSaved, setIsSaved ] = React.useState(false) 
 
-    // if (searchState === StateType.ERROR) {
-    //     return <Typography variant='body1' sx={{ fontSize: 24}}>Oh no! We could not find any results for your city. Please try again. </Typography>
-    // }
-
-    // if (searchState === StateType.LOADING) {
-    //     return <Typography variant='body1' sx={{ fontSize: 24}}>Im loading </Typography>
-    // }
-
-    console.log(data, searchState)
-    const cityName = data.name;
+    const cityQuery = data.name;
     const temp = data.main.temp;
     const wind = data.wind.speed;
     const humidity = data.main.humidity;
 
     React.useEffect(() => {
         if (favorites.length > 0) {
-            const check = favorites.find(favorite => favorite.name === cityName);
+            console.log('faves', favorites)
+            const check = favorites.find(favorite => favorite.name === cityQuery);
+            console.log("🚀 ~ file: details.tsx ~ line 31 ~ React.useEffect ~ check", check)
             if (check) {
                 setIsSaved(true)
+            } else {
+                setIsSaved(false)
             }
         } else {
             setIsSaved(false)
         }
-    }, [favorites])
+    }, [favorites, data])
 
     const addToFavorites = (data: WeatherData) => {
         setFavorites([...favorites, data])
     }
 
     const removeFromFavorites = () => {
-        const updatedFavorites = favorites.filter(favorite => favorite.name !== cityName);
+        const updatedFavorites = favorites.filter(favorite => favorite.name !== cityQuery);
         setFavorites(updatedFavorites)
         setIsSaved(false)
     }
@@ -62,42 +56,36 @@ export const Details: React.FC<DetailsProps> = ({ data, searchState, favorites, 
         }
     }
 
-
-
     return (
         <React.Fragment>
-            {searchState === StateType.SUCCESS && (
-                <Box>
-                    <Box maxWidth="500px" marginTop='50px' padding='20px'>
-                        <Box sx={{ display: "flex"}}>
-                            <Typography variant='h2' sx={{ fontSize: 35, marginBottom: '60px' }}>Current weather in {cityName}</Typography>
-                            {isSaved ? (
-                                <Box onClick={handleClick}>
-                                    <StarIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
-                                </Box>
-                            ) : 
-                            (
-                                <Box onClick={handleClick}>
-                                    <StarBorderIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
-                                </Box>
-                            )
-                            }
+            <Box maxWidth="500px" marginTop='50px' padding='20px'>
+                <Box sx={{ display: "flex"}}>
+                    <Typography variant='h2' sx={{ fontSize: 35, marginBottom: '60px' }}>Current weather in {cityQuery}</Typography>
+                    {isSaved ? (
+                        <Box onClick={handleClick}>
+                            <StarIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
                         </Box>
-                        <Box sx={{ display: "flex"}} marginBottom='20px'>
-                            <ThermostatIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
-                            <Typography variant='body1' sx={{ fontSize: 24}}>Temperature: {temp}°C</Typography>
+                    ) : 
+                    (
+                        <Box onClick={handleClick}>
+                            <StarBorderIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
                         </Box>
-                        <Box sx={{ display: "flex"}} marginBottom='20px'>
-                            <AirIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
-                            <Typography variant='body1' sx={{ fontSize: 24}}>Wind Speed: {wind} m/s</Typography>
-                        </Box>
-                        <Box sx={{ display: "flex"}} marginBottom='20px'>
-                            <InvertColorsIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
-                            <Typography variant='body1' sx={{ fontSize: 24}}>Humidity: {humidity}%</Typography>
-                        </Box>
-                    </Box>
+                    )
+                    }
                 </Box>
-            )}
+                <Box sx={{ display: "flex"}} marginBottom='20px'>
+                    <ThermostatIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
+                    <Typography variant='body1' sx={{ fontSize: 24}}>Temperature: {temp}°C</Typography>
+                </Box>
+                <Box sx={{ display: "flex"}} marginBottom='20px'>
+                    <AirIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
+                    <Typography variant='body1' sx={{ fontSize: 24}}>Wind Speed: {wind} m/s</Typography>
+                </Box>
+                <Box sx={{ display: "flex"}} marginBottom='20px'>
+                    <InvertColorsIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
+                    <Typography variant='body1' sx={{ fontSize: 24}}>Humidity: {humidity}%</Typography>
+                </Box>
+            </Box>
         </React.Fragment>
     )
 };
