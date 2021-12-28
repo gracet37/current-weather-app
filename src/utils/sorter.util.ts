@@ -7,12 +7,12 @@ export const resultsSorter = (favorites: WeatherData[], sort: string): WeatherDa
             const aName = a.name;
             const bName = b.name;
 
-            if (aName > bName) {
-                return 1
-            }
-
             if (aName < bName) {
                 return -1
+            }
+
+            if (aName > bName) {
+                return 1
             }
 
             return 0
@@ -22,12 +22,12 @@ export const resultsSorter = (favorites: WeatherData[], sort: string): WeatherDa
             const aName = a.name;
             const bName = b.name;
 
-            if (aName > bName) {
-                return -1
-            }
-
             if (aName < bName) {
                 return 1
+            }
+
+            if (aName > bName) {
+                return -1
             }
 
             return 0

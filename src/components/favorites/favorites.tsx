@@ -21,21 +21,24 @@ export const Favorites: React.FC<FavoritesProps> = ({ favorites, setFavorites, h
         setFavorites(updatedFavorites)
     }
 
+    const sortedArray = React.useMemo(() => {
+        return resultsSorter(favorites, sort)
+    }, [sort, favorites])
+
     return (
-        <React.Fragment>
+        <Box marginY='50px' padding='50px' sx={{ border: '1px solid grey', borderRadius: '3px'}}>
            <Box onClick={() => {
-               console.log('sort', sort)
-                    resultsSorter(favorites, sort)
                     setSort(sort === SortType.ASC ? SortType.DESC : SortType.ASC)
+                    resultsSorter(favorites, sort)
                 }}
                 sx={{ display: "flex", cursor: 'pointer'}}
                 justifyContent='center'
             >
-                {/* {sort === 'asc' ? <ArrowUpwardIcon sx={{ fontSize: 35, marginLeft: '20px'}}/> :  <ArrowDownwardIcon sx={{ fontSize: 35, marginLeft: '20px'}}/>} */}
                 <Typography variant='h2' sx={{ fontSize: 35, marginBottom: '60px' }}>Favorited cities:</Typography>
+                {sort === SortType.ASC ? <ArrowUpwardIcon sx={{ fontSize: 35, marginLeft: '20px'}}/> :  <ArrowDownwardIcon sx={{ fontSize: 35, marginLeft: '20px'}}/>}
             </Box>
-           {favorites.length > 0 ? (
-               favorites.map((favorite, i) => {
+           {sortedArray.length > 0 ? (
+               sortedArray.map((favorite, i) => {
                 return (
                     <Box sx={{ display: "flex"}} marginBottom='20px' key={i}>
                         <Box onClick={() => handleDataChange(favorite)}>
@@ -47,9 +50,9 @@ export const Favorites: React.FC<FavoritesProps> = ({ favorites, setFavorites, h
                     </Box>
                 )
            })) : (
-            <Typography variant='body1' sx={{ fontSize: 24}}>You do not have any saved cities</Typography>
+            <Typography variant='body1' sx={{ fontSize: 18, color: '#919191'}}>You do not have any saved cities</Typography>
            )
         }
-        </React.Fragment>
+        </Box>
     )
 };

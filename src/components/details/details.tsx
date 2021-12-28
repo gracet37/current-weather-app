@@ -49,40 +49,37 @@ export const Details: React.FC<DetailsProps> = ({ data, favorites, setFavorites 
         if (isSaved) {
             removeFromFavorites()
         } else {
-            console.log('hi')
             addToFavorites(data)
         }
     }
 
     return (
         <React.Fragment>
-            <Box marginTop='50px' padding='20px'>
-                <Box sx={{ display: "flex"}}>
-                    <Typography variant='h2' sx={{ fontSize: 35, marginBottom: '60px' }}>Current weather in {cityQuery}</Typography>
-                    {isSaved ? (
-                        <Box onClick={handleClick}>
-                            <StarIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
-                        </Box>
-                    ) : 
-                    (
-                        <Box onClick={handleClick}>
-                            <StarBorderIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
-                        </Box>
-                    )
-                    }
-                </Box>
-                <Box sx={{ display: "flex"}} marginBottom='20px'>
-                    <ThermostatIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
-                    <Typography variant='body1' sx={{ fontSize: 24}}>Temperature: {temp}°C</Typography>
-                </Box>
-                <Box sx={{ display: "flex"}} marginBottom='20px'>
-                    <AirIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
-                    <Typography variant='body1' sx={{ fontSize: 24}}>Wind Speed: {wind} m/s</Typography>
-                </Box>
-                <Box sx={{ display: "flex"}} marginBottom='20px'>
-                    <InvertColorsIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
-                    <Typography variant='body1' sx={{ fontSize: 24}}>Humidity: {humidity}%</Typography>
-                </Box>
+            <Box sx={{ display: "flex", alignItems: "center", marginBottom: "40px", justifyContent: "center"}}>
+                <Typography variant='h2' sx={{ fontSize: 40, fontWeight: 500 }}>{cityQuery}</Typography>
+                {isSaved ? (
+                    <Box onClick={handleClick}>
+                        <StarIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
+                    </Box>
+                ) : 
+                (
+                    <Box onClick={handleClick}>
+                        <StarBorderIcon sx={{ fontSize: 35, marginLeft: '20px', cursor: 'pointer'}}/>
+                    </Box>
+                )
+                }
+            </Box>
+            <Box sx={{ display: "flex"}} marginBottom='20px'>
+                <ThermostatIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
+                <Typography variant='body1' sx={{ fontSize: 24}}>Temperature: {temp}°C</Typography>
+            </Box>
+            <Box sx={{ display: "flex"}} marginBottom='20px'>
+                <AirIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
+                <Typography variant='body1' sx={{ fontSize: 24}}>Wind Speed: {wind} m/s</Typography>
+            </Box>
+            <Box sx={{ display: "flex"}} marginBottom='20px'>
+                <InvertColorsIcon sx={{ fontSize: 35, marginRight: '20px'}}/>
+                <Typography variant='body1' sx={{ fontSize: 24}}>Humidity: {humidity}%</Typography>
             </Box>
         </React.Fragment>
     )

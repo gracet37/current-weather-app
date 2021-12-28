@@ -31,25 +31,25 @@ const App: React.FC = () => {
   const cityWeatherSearch = (cityQuery: string) => {
     setSearchState(StateType.LOADING)
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityQuery}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`)
-    .then(response => response.json())
-    .then(data => {
-      if (data.cod === 200) {
-        setSearchState(StateType.SUCCESS);
-        setData(data)
-      } else {
-        setSearchState(StateType.ERROR);
-        setError(data.cod)
-      }
-    })
-    .catch(err => {
-        setSearchState(StateType.ERROR);
-        setError(err.cod)
-    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.cod === 200) {
+          setSearchState(StateType.SUCCESS);
+          setData(data)
+        } else {
+          setSearchState(StateType.ERROR);
+          setError(data.cod)
+        }
+      })
+      .catch(err => {
+          setSearchState(StateType.ERROR);
+          setError(err.cod)
+      })
 }
 
   React.useEffect(() => {
     if (cityQuery) {
-       const timeOutId = setTimeout(() => cityWeatherSearch(cityQuery), 1000);
+      const timeOutId = setTimeout(() => cityWeatherSearch(cityQuery), 1000);
       return () => clearTimeout(timeOutId);
     }
   }, [cityQuery]);

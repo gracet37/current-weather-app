@@ -15,8 +15,6 @@ export const Error: React.FC<ErrorProps> = ({ error }) => {
         }
     }
     return (
-        // <React.Fragment>
-            <Typography variant='body1' sx={{ fontSize: 24}}>{errorMessage()}</Typography>
-        // </React.Fragment>
+        <Typography variant='body1' sx={{ fontSize: 18}}>{errorMessage()}</Typography>
     )
 };

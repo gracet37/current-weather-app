@@ -13,7 +13,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ handleInputChange }) => 
                 aria-label="city search input" 
                 fullWidth
                 id="outlined-basic" 
-                label="City search" 
+                label="City name" 
                 variant="outlined" 
                 onChange={(e) => handleInputChange(e.target.value)}
             />
