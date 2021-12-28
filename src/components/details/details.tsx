@@ -14,7 +14,6 @@ type DetailsProps = {
 };
 
 export const Details: React.FC<DetailsProps> = ({ data, favorites, setFavorites }) => {
-console.log("🚀 ~ file: details.tsx ~ line 17 ~ data", data)
     const [ isSaved, setIsSaved ] = React.useState(false) 
 
     const cityQuery = data.name;
@@ -26,7 +25,6 @@ console.log("🚀 ~ file: details.tsx ~ line 17 ~ data", data)
         if (favorites.length > 0) {
             console.log('faves', favorites)
             const check = favorites.find(favorite => favorite.name === cityQuery);
-            console.log("🚀 ~ file: details.tsx ~ line 31 ~ React.useEffect ~ check", check)
             if (check) {
                 setIsSaved(true)
             } else {

@@ -12,21 +12,27 @@ import { WeatherData } from './types';
 const App: React.FC = () => {
 
   const [ cityQuery, setCityQuery ] = React.useState<string>('')
-  const [ searchState, setSearchState ] = React.useState(StateType.LOADING);
+  const [ searchState, setSearchState ] = React.useState(StateType.PENDING);
   const [ data, setData ] = React.useState<WeatherData>();
   const [ error, setError ] = React.useState();
   const [ favorites, setFavorites ] = React.useState<WeatherData[]>([]);
 
   const cityWeatherSearch = (cityQuery: string) => {
+    setSearchState(StateType.LOADING)
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityQuery}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`)
     .then(response => response.json())
     .then(data => {
+      if (data.cod === 200) {
         setSearchState(StateType.SUCCESS);
         setData(data)
+      } else {
+        setSearchState(StateType.ERROR);
+        setError(data.cod)
+      }
     })
     .catch(err => {
         setSearchState(StateType.ERROR);
-        setError(err)
+        setError(err.cod)
     })
 }
 
@@ -51,7 +57,7 @@ const App: React.FC = () => {
     <Box>
       <Typography variant="h1" fontSize="50px">Current weather city search</Typography>
       <SearchForm handleInputChange={handleInputChange} />
-      <DetailsContainer data={data} searchState={searchState} favorites={favorites} setFavorites={setFavorites} />
+      <DetailsContainer data={data} searchState={searchState} favorites={favorites} setFavorites={setFavorites} error={error}/>
       <Favorites favorites={favorites} setFavorites={setFavorites} handleDataChange={handleDataChange}/>
     </Box>
   );
