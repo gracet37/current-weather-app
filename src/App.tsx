@@ -17,10 +17,12 @@ const App: React.FC = () => {
     const [favorites, setFavorites] = React.useState<string[]>([]);
 
     React.useEffect(() => {
-        const localStorageValues = JSON.parse(
-            localStorage.getItem('favorite-cities')
-        );
-        if (localStorageValues.length > 0) {
+        let localStorageValues;
+        const localStorageCheck = localStorage.getItem('favorite-cities');
+        if (localStorageCheck) {
+            localStorageValues = JSON.parse(
+                localStorage.getItem('favorite-cities')
+            );
             setFavorites(localStorageValues);
         }
     }, []);

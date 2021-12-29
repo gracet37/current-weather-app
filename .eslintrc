@@ -20,10 +20,7 @@
         "ecmaVersion": 13,
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
+    "plugins": ["react", "@typescript-eslint"],
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         // "@typescript-eslint/ban-ts-ignore": "error",

@@ -1,7 +1,7 @@
 export enum StateType {
     PENDING = 'PENDING',
     LOADING = 'LOADING',
-    SUCCESS = 'SUCCESS', 
+    SUCCESS = 'SUCCESS',
     ERROR = 'ERROR'
 }
 

@@ -58,6 +58,15 @@ export const Details: React.FC<DetailsProps> = ({
         }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const FlexBox = (children: any) => {
+        return (
+            <Box sx={{ display: 'flex' }} marginBottom="20px">
+                {children}
+            </Box>
+        );
+    };
+
     return (
         <React.Fragment>
             <Box
@@ -95,24 +104,24 @@ export const Details: React.FC<DetailsProps> = ({
                     </Box>
                 )}
             </Box>
-            <Box sx={{ display: 'flex' }} marginBottom="20px">
+            <FlexBox>
                 <ThermostatIcon sx={{ fontSize: 35, marginRight: '20px' }} />
                 <Typography variant="body1" sx={{ fontSize: 24 }}>
                     Temperature: {temp}°C
                 </Typography>
-            </Box>
-            <Box sx={{ display: 'flex' }} marginBottom="20px">
+            </FlexBox>
+            <FlexBox>
                 <AirIcon sx={{ fontSize: 35, marginRight: '20px' }} />
                 <Typography variant="body1" sx={{ fontSize: 24 }}>
                     Wind Speed: {wind} m/s
                 </Typography>
-            </Box>
-            <Box sx={{ display: 'flex' }} marginBottom="20px">
+            </FlexBox>
+            <FlexBox>
                 <InvertColorsIcon sx={{ fontSize: 35, marginRight: '20px' }} />
                 <Typography variant="body1" sx={{ fontSize: 24 }}>
                     Humidity: {humidity}%
                 </Typography>
-            </Box>
+            </FlexBox>
         </React.Fragment>
     );
 };
