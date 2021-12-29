@@ -1,8 +1,8 @@
 export enum StateType {
-    PENDING = "PENDING",
-    LOADING = "LOADING",
-    SUCCESS = "SUCCESS", 
-    ERROR = "ERROR"
+    PENDING = 'PENDING',
+    LOADING = 'LOADING',
+    SUCCESS = 'SUCCESS', 
+    ERROR = 'ERROR'
 }
 
 export enum SortType {
