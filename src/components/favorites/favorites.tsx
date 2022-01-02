@@ -6,7 +6,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { resultsSorter } from '../../utils/sorter.util';
 
-type FavoritesProps = {
+export type FavoritesProps = {
     favorites: string[];
     setFavorites: (data: string[]) => void;
     handleDataChange: (data: string) => void;
@@ -81,6 +81,7 @@ export const Favorites: React.FC<FavoritesProps> = ({
                                 cursor: 'pointer'
                             }}
                             key={i}
+                            data-testid="favorite"
                         >
                             <Box onClick={() => handleDataChange(favorite)}>
                                 <Typography

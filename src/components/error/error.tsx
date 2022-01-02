@@ -15,5 +15,9 @@ export const Error: React.FC<ErrorProps> = ({ error }) => {
                 return 'Oh no! Something went wrong. Please try again.';
         }
     };
-    return <Typography variant="body1">{errorMessage()}</Typography>;
+    return (
+        <Typography data-testid="error" variant="body1">
+            {errorMessage()}
+        </Typography>
+    );
 };

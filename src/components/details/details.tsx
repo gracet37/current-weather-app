@@ -68,6 +68,7 @@ export const Details: React.FC<DetailsProps> = ({
                     justifyContent: 'center',
                     cursor: 'pointer'
                 }}
+                data-testid="details"
             >
                 <Typography
                     variant="h2"

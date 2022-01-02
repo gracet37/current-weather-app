@@ -5,7 +5,7 @@ import { CircularProgress, Box, Typography } from '@mui/material';
 import { Details } from './details';
 import { Error } from '../error';
 
-type DetailsContainerProps = {
+export type DetailsContainerProps = {
     data: WeatherData;
     searchState: StateType;
     favorites: string[];
@@ -28,13 +28,17 @@ export const DetailsContainer: React.FC<DetailsContainerProps> = ({
             sx={{ border: '1px solid grey', borderRadius: '3px' }}
         >
             {searchState === StateType.PENDING && (
-                <Typography variant="body1" sx={{ color: '#919191' }}>
+                <Typography
+                    data-testid="pending"
+                    variant="body1"
+                    sx={{ color: '#919191' }}
+                >
                     Results will show here
                 </Typography>
             )}
             {searchState === StateType.ERROR && <Error error={error} />}
             {searchState === StateType.LOADING && (
-                <Box textAlign="center">
+                <Box textAlign="center" data-testid="loading">
                     <CircularProgress />
                 </Box>
             )}

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="app-container MuiBox-root css-0"
+>
+  <h1
+    className="MuiTypography-root MuiTypography-h1 css-1495pn8-MuiTypography-root"
+  >
+    Current weather in ...
+  </h1>
+  <div
+    aria-label="city search input"
+    className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+  >
+    <label
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+      data-shrink={false}
+      htmlFor="outlined-basic"
+      id="outlined-basic-label"
+    >
+      City name
+    </label>
+    <div
+      className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        autoFocus={false}
+        className="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+        disabled={false}
+        id="outlined-basic"
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="text"
+      />
+      <fieldset
+        aria-hidden={true}
+        className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+      >
+        <legend
+          className="css-173wfxe"
+        >
+          <span>
+            City name
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root css-yr6epb"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1 css-a60rq8-MuiTypography-root"
+      data-testid="pending"
+    >
+      Results will show here
+    </p>
+  </div>
+  <div
+    className="MuiBox-root css-1lbst1p"
+  >
+    <div
+      className="MuiBox-root css-5ehbpw"
+      onClick={[Function]}
+    >
+      <h2
+        className="MuiTypography-root MuiTypography-h2 css-1kzlin5-MuiTypography-root"
+      >
+        Favorited cities:
+      </h2>
+      <svg
+        aria-hidden={true}
+        aria-label="sort ascending"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-6iv9kh-MuiSvgIcon-root"
+        data-testid="ArrowUpwardIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+        />
+      </svg>
+    </div>
+    <p
+      className="MuiTypography-root MuiTypography-body1 css-a60rq8-MuiTypography-root"
+    >
+      You do not have any saved cities
+    </p>
+  </div>
+</div>
+`;
