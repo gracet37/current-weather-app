@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import { SearchForm } from './components/search-form';
 import { Box, Typography } from '@mui/material';
