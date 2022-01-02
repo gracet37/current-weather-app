@@ -17,7 +17,8 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Jest](https://jestjs.io/)
+[React Testing Library](https://testing-library.com/)
 
 ### `npm run build`
 
@@ -31,7 +32,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run prettier`
 
-Formats code with prettier on all files. See (https://prettier.io/) for more information.
+Formats code with prettier on all files. See [prettier](https://prettier.io/) for more information.
+
+### `npm run lint`
+
+Runs lint check on all files. See [Eslint](https://eslint.org/) for more information.
 
 ## Other packages
 
