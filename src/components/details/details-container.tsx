@@ -28,11 +28,8 @@ export const DetailsContainer: React.FC<DetailsContainerProps> = ({
             sx={{ border: '1px solid grey', borderRadius: '3px' }}
         >
             {searchState === StateType.PENDING && (
-                <Typography
-                    variant="body1"
-                    sx={{ fontSize: 18, color: '#919191' }}
-                >
-                    Results will show here.
+                <Typography variant="body1" sx={{ color: '#919191' }}>
+                    Results will show here
                 </Typography>
             )}
             {searchState === StateType.ERROR && <Error error={error} />}

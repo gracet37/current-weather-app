@@ -32,3 +32,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run prettier`
 
 Formats code with prettier on all files. See (https://prettier.io/) for more information.
+
+## Other packages
+
+### React component library - Material UI
+
+[Material UI](https://mui.com/)

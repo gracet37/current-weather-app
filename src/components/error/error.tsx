@@ -6,7 +6,7 @@ type ErrorProps = {
 };
 
 export const Error: React.FC<ErrorProps> = ({ error }) => {
-    // switch case to add when there are additional known error messages
+    // add to switch case when there are additional known error messages
     const errorMessage = () => {
         switch (error) {
             case '404':
@@ -15,9 +15,5 @@ export const Error: React.FC<ErrorProps> = ({ error }) => {
                 return 'Oh no! Something went wrong. Please try again.';
         }
     };
-    return (
-        <Typography variant="body1" sx={{ fontSize: 18 }}>
-            {errorMessage()}
-        </Typography>
-    );
+    return <Typography variant="body1">{errorMessage()}</Typography>;
 };

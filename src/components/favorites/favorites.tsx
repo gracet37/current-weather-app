@@ -43,24 +43,31 @@ export const Favorites: React.FC<FavoritesProps> = ({
                     );
                     resultsSorter(favorites, sort);
                 }}
-                sx={{ display: 'flex', cursor: 'pointer' }}
-                justifyContent="center"
+                sx={{
+                    display: 'flex',
+                    cursor: 'pointer',
+                    justifyContent: 'center'
+                }}
             >
                 <Typography
                     variant="h2"
-                    sx={{ fontSize: 35, marginBottom: '60px' }}
+                    sx={{
+                        fontSize: 35,
+                        marginBottom: '60px',
+                        marginRight: '20px'
+                    }}
                 >
                     Favorited cities:
                 </Typography>
                 {sort === SortType.ASC ? (
                     <ArrowUpwardIcon
                         aria-label="sort ascending"
-                        sx={{ fontSize: 35, marginLeft: '20px' }}
+                        sx={{ fontSize: 35 }}
                     />
                 ) : (
                     <ArrowDownwardIcon
                         aria-label="sort descending"
-                        sx={{ fontSize: 35, marginLeft: '20px' }}
+                        sx={{ fontSize: 35 }}
                     />
                 )}
             </Box>
@@ -68,8 +75,11 @@ export const Favorites: React.FC<FavoritesProps> = ({
                 sortedArray.map((favorite, i) => {
                     return (
                         <Box
-                            sx={{ display: 'flex' }}
-                            marginBottom="20px"
+                            sx={{
+                                display: 'flex',
+                                marginBottom: '20px',
+                                cursor: 'pointer'
+                            }}
                             key={i}
                         >
                             <Box onClick={() => handleDataChange(favorite)}>
@@ -84,8 +94,7 @@ export const Favorites: React.FC<FavoritesProps> = ({
                                 <RemoveCircleOutlineIcon
                                     sx={{
                                         fontSize: 35,
-                                        marginLeft: '20px',
-                                        cursor: 'pointer'
+                                        marginLeft: '20px'
                                     }}
                                 />
                             </Box>
@@ -93,10 +102,7 @@ export const Favorites: React.FC<FavoritesProps> = ({
                     );
                 })
             ) : (
-                <Typography
-                    variant="body1"
-                    sx={{ fontSize: 18, color: '#919191' }}
-                >
+                <Typography variant="body1" sx={{ color: '#919191' }}>
                     You do not have any saved cities
                 </Typography>
             )}

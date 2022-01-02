@@ -58,15 +58,6 @@ export const Details: React.FC<DetailsProps> = ({
         }
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const FlexBox = (children: any) => {
-        return (
-            <Box sx={{ display: 'flex' }} marginBottom="20px">
-                {children}
-            </Box>
-        );
-    };
-
     return (
         <React.Fragment>
             <Box
@@ -74,10 +65,14 @@ export const Details: React.FC<DetailsProps> = ({
                     display: 'flex',
                     alignItems: 'center',
                     marginBottom: '40px',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    cursor: 'pointer'
                 }}
             >
-                <Typography variant="h2" sx={{ fontSize: 40, fontWeight: 500 }}>
+                <Typography
+                    variant="h2"
+                    sx={{ fontSize: 40, fontWeight: 500, marginRight: '20px' }}
+                >
                     {cityName}
                 </Typography>
                 {isSaved ? (
@@ -85,9 +80,7 @@ export const Details: React.FC<DetailsProps> = ({
                         <StarIcon
                             aria-label="saved to favorites"
                             sx={{
-                                fontSize: 35,
-                                marginLeft: '20px',
-                                cursor: 'pointer'
+                                fontSize: 35
                             }}
                         />
                     </Box>
@@ -96,32 +89,30 @@ export const Details: React.FC<DetailsProps> = ({
                         <StarBorderIcon
                             aria-label="add to favorites"
                             sx={{
-                                fontSize: 35,
-                                marginLeft: '20px',
-                                cursor: 'pointer'
+                                fontSize: 35
                             }}
                         />
                     </Box>
                 )}
             </Box>
-            <FlexBox>
+            <Box sx={{ display: 'flex', marginBottom: '20px' }}>
                 <ThermostatIcon sx={{ fontSize: 35, marginRight: '20px' }} />
                 <Typography variant="body1" sx={{ fontSize: 24 }}>
                     Temperature: {temp}°C
                 </Typography>
-            </FlexBox>
-            <FlexBox>
+            </Box>
+            <Box sx={{ display: 'flex', marginBottom: '20px' }}>
                 <AirIcon sx={{ fontSize: 35, marginRight: '20px' }} />
                 <Typography variant="body1" sx={{ fontSize: 24 }}>
                     Wind Speed: {wind} m/s
                 </Typography>
-            </FlexBox>
-            <FlexBox>
+            </Box>
+            <Box sx={{ display: 'flex', marginBottom: '20px' }}>
                 <InvertColorsIcon sx={{ fontSize: 35, marginRight: '20px' }} />
                 <Typography variant="body1" sx={{ fontSize: 24 }}>
                     Humidity: {humidity}%
                 </Typography>
-            </FlexBox>
+            </Box>
         </React.Fragment>
     );
 };
