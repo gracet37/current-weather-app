@@ -10,53 +10,53 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:jest/recommended"
     ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".ts", ".tsx"]
+            }
+        }
+    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 13,
+        "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["react", "@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "import", "react", "react-hooks", "jest"],
     "rules": {
-        "@typescript-eslint/adjacent-overload-signatures": "error",
-        // "@typescript-eslint/ban-ts-ignore": "error",
-        "@typescript-eslint/ban-types": "error",
-        // "@typescript-eslint/camelcase": "error",
-        // "@typescript-eslint/class-name-casing": "error",
-        "@typescript-eslint/consistent-type-assertions": "error",
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/interface-name-prefix": "off",
-        "@typescript-eslint/member-delimiter-style": "error",
-        "@typescript-eslint/no-array-constructor": "error",
-        "@typescript-eslint/no-empty-function": "error",
-        "@typescript-eslint/no-empty-interface": "error",
-        "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/no-inferrable-types": "error",
-        "@typescript-eslint/no-misused-new": "error",
-        "@typescript-eslint/no-namespace": "error",
-        "@typescript-eslint/no-non-null-assertion": "warn",
-        "@typescript-eslint/no-this-alias": "error",
-        "@typescript-eslint/no-unused-vars": "error",
-        "@typescript-eslint/no-use-before-define": "error",
-        "@typescript-eslint/no-var-requires": "error",
-        "@typescript-eslint/prefer-interface": "off",
-        "@typescript-eslint/prefer-namespace-keyword": "error",
-        "@typescript-eslint/triple-slash-reference": "error",
-        "@typescript-eslint/type-annotation-spacing": "error",
-        "camelcase": "off",
-        "handle-callback-err": "off",
-        "import/named": "off",
-        "import/namespace": "off",
-        "import/no-unresolved": "off",
-        "no-empty-pattern": "warn",
-        "no-unused-vars": "warn",
-        "no-var": "off",
-        "react/prop-types": "off",
-        // "standard/no-callback-literal": "warn",
-        "use-isnan": "off"
-    }
+        "import/no-webpack-loader-syntax": "off",
+        "jest/no-disabled-tests": "off"
+    },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "parser": "@typescript-eslint/parser",
+            "rules": {
+                "@typescript-eslint/explicit-function-return-type": "off",
+                "@typescript-eslint/interface-name-prefix": "off",
+                "@typescript-eslint/no-explicit-any": "warn",
+                "@typescript-eslint/no-var-requires": "warn",
+                "@typescript-eslint/prefer-interface": "off",
+                "@typescript-eslint/no-empty-function": "error",
+                "@typescript-eslint/no-unused-vars": "error",
+                "@typescript-eslint/ban-ts-comment": "error",
+                "camelcase": "off",
+                "handle-callback-err": "off",
+                "import/named": "off",
+                "import/namespace": "off",
+                "import/no-unresolved": "off",
+                "no-empty-pattern": "warn",
+                "no-var": "error",
+                "react/prop-types": "off",
+                "use-isnan": "off"
+            }
+        }
+    ]
 }
